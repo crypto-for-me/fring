@@ -3,7 +3,7 @@ import yaml
 
 import console
 
-CONFIG_FILE_PATH = os.path.join(os.path.expanduser('~'), '.config', 'crying', 'crying.yml')
+CONFIG_FILE_PATH = os.path.join(os.path.expanduser('~'), '.config', 'fring', 'fring.yml')
 DEFAULTS = {
     'python_call': 'python',
     'pip_call': 'python -m pip'
@@ -43,7 +43,7 @@ def init() -> None:
         edit(k, v)
 
 if not os.path.exists(CONFIG_FILE_PATH):
-    console.warning(f'Configuration file not found. If this is your first time running Crying, you can safely ignore this message.')
+    console.warning(f'Configuration file not found. If this is your first time running Fring, you can safely ignore this message.')
     init()
 else:
     for k in DEFAULTS:

@@ -1,5 +1,5 @@
-# crying
-📅 "Crying" = "Crypto" + "Staging" | A simple, but efficient development and production workflow manager, so you can focus on developing instead of crying
+# `$ fring`
+📅 Named after [Gustavo Fring](https://en.wikipedia.org/wiki/Gus_Fring), Fring is a tool to manage your Flask projects and run them in production with ease. Because a developer provides for their server uptime.
 
 ## Support
 ### OS
@@ -10,7 +10,7 @@
 
 ## Installation
 ```bash
-pip install crying
+pip install fring
 ```
 
 Next, install the following package:
@@ -25,7 +25,7 @@ After that, you need to specify the path of your projects.
 Use quotes in the value (`--v`) if the path contains spaces.
 
 ```bash
-crying settings --k projects --v /home/tears
+fring settings --k projects --v /home/tears
 ```
 
 If you want to, you can also specify
@@ -34,13 +34,13 @@ If you want to, you can also specify
 Once you have everything installed, go to the directory of your development project and set the name for your new project:
 
 ```bash
-crying init demo
+fring init demo
 ```
 
 To start the production server, run:
 
 ```bash
-crying start demo
+fring start demo
 ```
 
 And you should be good to go!
@@ -50,16 +50,16 @@ And you should be good to go!
 You can access your terminal multiplexer by running:
 
 ```bash
-crying show demo
+fring show demo
 ```
 
 To stop the production server, run:
 
 ```bash
-crying stop demo
+fring stop demo
 ```
 
 This will stop the production server.
 
 ## Configuration
-The default file path of the configuration file is `/root/.config/crying/crying.conf`.
+The default file path of the configuration file is `/root/.config/fring/fring.conf`.
