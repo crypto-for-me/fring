@@ -13,7 +13,7 @@ def get(key: str=None):
     with open(CONFIG_FILE_PATH, 'r') as f:
         config = yaml.load(f, Loader=yaml.FullLoader)
 
-    if not key:
+    if key is None:
         if not config:
             return {}
 
@@ -26,7 +26,7 @@ def edit(key: str, value: str=None) -> None:
     except FileNotFoundError:
         config = {}
 
-    if not value:
+    if value is not None:
         config = key
     else:
         config[key] = value
@@ -35,12 +35,14 @@ def edit(key: str, value: str=None) -> None:
         yaml.dump(config, f)
 
 def init() -> None:
-    console.info(f'Initializing config file at "{CONFIG_FILE_PATH}"')
+    console.info(f'Initializing config file at "{CONFIG_FILE_PATH}"...')
 
     os.makedirs(os.path.dirname(CONFIG_FILE_PATH), exist_ok=True)
 
     for k, v in DEFAULTS.items():
         edit(k, v)
+    
+    edit('projects', {})
 
 if not os.path.exists(CONFIG_FILE_PATH):
     console.warning(f'Configuration file not found. If this is your first time running Fring, you can safely ignore this message.')
@@ -48,7 +50,7 @@ if not os.path.exists(CONFIG_FILE_PATH):
 else:
     for k in DEFAULTS:
         if k not in get():
-            console.warning(f'Configuration at "{CONFIG_FILE_PATH}" seems out to date, as some keys don\'t exist Re-initializing...')
+            console.warning(f'Configuration at "{CONFIG_FILE_PATH}" seems out to date, as some keys don\'t exist. Re-initializing...')
             init()
             break
 

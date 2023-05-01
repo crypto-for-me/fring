@@ -1,20 +1,22 @@
 import os
-import io
 import shutil
 import datetime
-import rich.progress
 
+import config
 import console
+
+from rich.progress import Progress, SpinnerColumn, TextColumn
 
 def start_backup():
     console.info('Starting backup...')
     dt = datetime.datetime.now().strftime('%Y-%m-%d-%H-%M-%S')
 
     zip_name = f'backup-{dt}'
-    zip_path = os.path.join(os.getcwd(), f'{zip_name}.zip')
 
-    with rich.progress.open(zip_path, 'w') as writer:
-        shutil.make_archive(zip_name, 'zip', os.getcwd(), writer=writer)
+    with Progress(SpinnerColumn(), TextColumn("[progress.description]{task.description}"), transient=True) as progress:
+        progress.add_task(description='Zipping...', total=None)
+
+        shutil.make_archive(zip_name, 'zip', config.get('backup_folder'))
 
     console.success('Successfully backed up!')
 

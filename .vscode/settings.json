@@ -1,0 +1,14 @@
+{
+    "hide-files.files": [
+        "fring/__pycache__"
+    ],
+    "files.exclude": {
+        "**/.git": true,
+        "**/.svn": true,
+        "**/.hg": true,
+        "**/CVS": true,
+        "**/.DS_Store": true,
+        "**/Thumbs.db": true,
+        "fring/__pycache__": true
+    }
+}
